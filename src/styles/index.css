@@ -1,14 +1,74 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  font-size: 10px;
+  background: url(../assets/images/background.svg) bottom center;
+  background-size: cover;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Amatic SC', cursive;
 }
+
+a {
+  text-decoration: none;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+h1 {
+  text-align: center;
+  font-size: 10rem;
+  line-height: 1;
+  margin-bottom: 0;
+  color: #fff;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.stages {
+  padding: 30px;
+}
+
+.stageItem {
+  padding: 12px;
+  outline: 1px solid #ffbd52;
+  background: rgba(21, 18, 8, 0.3);
+  margin-bottom: 5px;
+}
+
+.stageItem:hover {
+  outline: 1px solid white;
+  background: #666;
+}
+
+.stageItem .stageTitle {
+  font-size: 30px;
+  color: #fff;
+  margin: 0;
+  font-weight: bold;
+}
+
+.stageItem .stageName {
+  font-size: 15px;
+  color: #fff;
+  text-align: left;
+  margin: 0;
+}
+
