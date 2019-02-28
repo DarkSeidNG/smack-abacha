@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import { gameActions } from "../redux/actions/game.actions";
+import {connect} from "react-redux";
 
 class DirtAndMole extends Component {
-    componentDidMount() {
-
-    }
 
     onMoleClick = (e) => {
         if(!e.isTrusted) return; // cheater!
-        alert("A hit");
-        this.parentNode.classList.remove('up');
+        this.props.dispatch(gameActions.success());
+        e.target.parentNode.classList.remove('up');
     };
 
     render() {
@@ -20,4 +19,12 @@ class DirtAndMole extends Component {
     }
 }
 
-export { DirtAndMole };
+function mapStateToProps(state) {
+    const { hit } = state.game;
+    return {
+        hit
+    };
+}
+
+const connectedDirtAndMole = connect(mapStateToProps)(DirtAndMole);
+export { connectedDirtAndMole as DirtAndMole };

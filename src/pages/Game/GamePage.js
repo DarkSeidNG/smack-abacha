@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { dirtNumber } from "../../helpers/gameSetup";
 import { DirtAndMole } from "../../components/DirtAndMole";
+import { connect } from 'react-redux';
 
 
 class GamePage extends Component {
@@ -18,7 +19,7 @@ class GamePage extends Component {
         this.dirtItems = [];
         this.holes = [];
         this.timeUp = true;
-        this.time = this.randomTime(300 / parseInt(this.state.level), 1000 / parseInt(this.state.level));
+        this.time = this.randomTime(1000 / parseInt(this.state.level), 1000 / parseInt(this.state.level));
     }
 
     componentDidMount() {
@@ -27,6 +28,18 @@ class GamePage extends Component {
             this.setState({
                 level: params.level,
             });
+        }
+
+        const localHighestScore = parseInt(localStorage.getItem("highestScore"));
+        if (localHighestScore !== undefined){
+            this.setState({highestScore: localHighestScore,});
+        }
+    }
+
+    componentDidUpdate(oldProps) {
+        const newProps = this.props;
+        if(oldProps.hitIndex !== newProps.hitIndex) {
+            this.setState({score: this.state.score + 2});
         }
     }
 
@@ -46,7 +59,6 @@ class GamePage extends Component {
         const idx = Math.floor(Math.random() * holes.length);
         const hole = holes[idx];
         if (hole === this.state.lastHole) {
-            //console.log('Ah nah thats the same one bud');
             return this.randomHole(holes);
         }
         this.setState({lastHole: hole});
@@ -63,6 +75,7 @@ class GamePage extends Component {
     };
 
     startGame = () => {
+
         this.setState({upState: ''});
         this.holes = document.querySelectorAll('.hole');
 
@@ -71,7 +84,17 @@ class GamePage extends Component {
         this.setState({score: 0});
         this.peep();
         setTimeout(() => { this.timeUp = true; }, 20000);
-        setTimeout(() => { this.setState({ showButton: true }) }, 22000);
+        setTimeout(() => {
+            this.setHighScore();
+            this.setState({ showButton: true });
+        }, 22000);
+    };
+
+    setHighScore = () => {
+        if (this.state.score >= this.state.highestScore){
+            localStorage.setItem("highestScore", this.state.score);
+            this.setState({highestScore: this.state.score,});
+        }
     };
 
     render() {
@@ -82,13 +105,21 @@ class GamePage extends Component {
                 <div className="gameDetails"><div>Level - <span>{this.state.level}</span></div><div>Score - <span>{this.state.score}</span></div><div>Highest Score - <span>{this.state.highestScore}</span></div></div>
                 {this.state.showButton ? <button onClick={this.startGame} className="startButton" >Start Game</button> : ''}
 
-
                 <div className="game">
                     {this.createDirtItems()}
                 </div>
+
             </div>
         );
     }
 }
+function mapStateToProps(state) {
+    const { hit, hitIndex } = state.game;
+    return {
+        hit,
+        hitIndex
+    };
+}
 
-export { GamePage };
+const connectedGamePage = connect(mapStateToProps)(GamePage);
+export { connectedGamePage as GamePage };
