@@ -1,4 +1,4 @@
-#Whack-A-Tiku
+# Whack-A-Tiku
 
 Whack-A-Tiku is a simple whack-a-mole styled fun take on the recently concluded Nigerian Presidential election (2019) 
 
@@ -33,7 +33,7 @@ This app was bootstrapped using `create-react-app`
 * Push to the remote branch - `git push origin your-branch-name`
 * Open a pull request.
 
-Click this link to visit the hosted app [Whack-A-Tiku]()
+Click this link to visit the hosted app [Whack-A-Tiku](https://whack-a-tiku.herokuapp.com)
 
 I look forward to your pull requests :)
 
