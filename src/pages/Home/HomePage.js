@@ -6,9 +6,17 @@ class HomePage extends Component {
     constructor(props){
         super(props);
         this.state = {
-            highScore: localStorage.getItem('highestScore'),
+            highScore: 0,
         }
     }
+
+    componentDidMount() {
+        const localHighestScore = localStorage.getItem("highestScore");
+        if (localHighestScore !== null){
+            this.setState({highScore: localHighestScore,});
+        }
+    }
+
     render() {
         return (
             <div>

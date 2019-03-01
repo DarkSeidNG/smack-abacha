@@ -38,8 +38,8 @@ class GamePage extends Component {
             });
         }
 
-        const localHighestScore = parseInt(localStorage.getItem("highestScore"));
-        if (localHighestScore !== undefined){
+        const localHighestScore = localStorage.getItem("highestScore");
+        if (localHighestScore !== null){
             this.setState({highestScore: localHighestScore,});
         }
 
