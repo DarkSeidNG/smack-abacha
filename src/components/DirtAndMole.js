@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { gameActions } from "../redux/actions/game.actions";
 import {connect} from "react-redux";
+//import { Fireworks } from "../helpers/fireworksHelper";
 
 class DirtAndMole extends Component {
+
+    constructor(props){
+        super(props);
+        this.moleRef = React.createRef();
+    }
+    componentDidMount() {
+        //new Fireworks(this.moleRef.current);
+    }
 
     onMoleClick = (e) => {
         if(!e.isTrusted) return; // cheater!
@@ -13,7 +22,7 @@ class DirtAndMole extends Component {
     render() {
         return (
             <div className={`hole ` + this.props.upState}>
-                <div className="mole" onClick={this.onMoleClick} />
+                <div ref={this.moleRef} className="mole" onClick={this.onMoleClick} />
             </div>
         );
     }

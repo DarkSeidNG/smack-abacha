@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { dirtNumber } from "../../helpers/gameSetup";
 import { DirtAndMole } from "../../components/DirtAndMole";
 import { connect } from 'react-redux';
+import { Fireworks } from "../../helpers/fireworksHelper";
+import {BrowserRouter} from "react-router-dom";
 
 
 class GamePage extends Component {
@@ -15,6 +17,7 @@ class GamePage extends Component {
             score: 0,
             highestScore: 0,
         };
+        this.containerRef = React.createRef();
 
         this.dirtItems = [];
         this.holes = [];
@@ -34,6 +37,8 @@ class GamePage extends Component {
         if (localHighestScore !== undefined){
             this.setState({highestScore: localHighestScore,});
         }
+
+        new Fireworks(this.containerRef.current);
     }
 
     componentDidUpdate(oldProps) {
@@ -105,7 +110,7 @@ class GamePage extends Component {
                 <div className="gameDetails"><div>Level - <span>{this.state.level}</span></div><div>Score - <span>{this.state.score}</span></div><div>Highest Score - <span>{this.state.highestScore}</span></div></div>
                 {this.state.showButton ? <button onClick={this.startGame} className="startButton" >Start Game</button> : ''}
 
-                <div className="game">
+                <div className="game" ref={this.containerRef}>
                     {this.createDirtItems()}
                 </div>
 
