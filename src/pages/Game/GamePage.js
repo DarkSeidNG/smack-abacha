@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Fireworks } from "../../helpers/fireworksHelper";
 import swal from 'sweetalert';
 import fireworks from '../../assets/sounds/fireworks.wav';
-import pain from "../../assets/sounds/pain.wav";
+import {Link} from "react-router-dom";
 
 
 class GamePage extends Component {
@@ -126,7 +126,7 @@ class GamePage extends Component {
                 <h1>Whack-A-Tiku</h1>
                 <h3>This game is just a fun take on the 2019 Nigerian presidential elections, everything here is just for fun</h3>
                 <div className="gameDetails"><div>Level - <span>{this.state.level}</span></div><div>Score - <span>{this.state.score}</span></div><div>Highest Score - <span>{this.state.highestScore}</span></div></div>
-                {this.state.showButton ? <button onClick={this.startGame} className="startButton" >Start Game</button> : ''}
+                <Link to={`/`}><button className="gameButton" style={{float: 'left'}}>Main Menu</button></Link> {this.state.showButton ? <button onClick={this.startGame} className="gameButton" style={{float: 'right'}}>Start Game</button> : ''}
 
                 <div className="game" ref={this.containerRef}>
                     {this.createDirtItems()}

@@ -49,6 +49,16 @@ h3 {
   padding: 30px;
 }
 
+.home-highscore {
+  font-size: 25px;
+  text-align: center;
+}
+
+.home-highscore > span {
+  font-family: Roboto sans-serif;
+  color: #fff;
+}
+
 .levelItem {
   padding: 12px;
   outline: 1px solid #ffbd52;
@@ -117,11 +127,11 @@ h3 {
   top: 0;
 }
 
-.startButton {
-  width: 40%;
+.gameButton {
+  width: 42%;
   height: 30px;
-  margin-left: 30%;
   margin-top: 10px;
+  float: left;
 }
 
 .gameDetails {
