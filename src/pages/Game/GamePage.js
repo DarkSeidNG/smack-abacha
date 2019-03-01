@@ -3,7 +3,7 @@ import { dirtNumber } from "../../helpers/gameSetup";
 import { DirtAndMole } from "../../components/DirtAndMole";
 import { connect } from 'react-redux';
 import { Fireworks } from "../../helpers/fireworksHelper";
-import {BrowserRouter} from "react-router-dom";
+import swal from 'sweetalert';
 
 
 class GamePage extends Component {
@@ -23,6 +23,8 @@ class GamePage extends Component {
         this.holes = [];
         this.timeUp = true;
         this.time = this.randomTime(1000 / parseInt(this.state.level), 1000 / parseInt(this.state.level));
+
+
     }
 
     componentDidMount() {
@@ -38,7 +40,9 @@ class GamePage extends Component {
             this.setState({highestScore: localHighestScore,});
         }
 
-        new Fireworks(this.containerRef.current);
+        this.fireworks = new Fireworks(this.containerRef.current);
+        this.fireworks.init();
+        this.fireworks.bindEvents();
     }
 
     componentDidUpdate(oldProps) {
@@ -80,7 +84,6 @@ class GamePage extends Component {
     };
 
     startGame = () => {
-
         this.setState({upState: ''});
         this.holes = document.querySelectorAll('.hole');
 
@@ -90,6 +93,7 @@ class GamePage extends Component {
         this.peep();
         setTimeout(() => { this.timeUp = true; }, 20000);
         setTimeout(() => {
+            this.fireworks.clear();
             this.setHighScore();
             this.setState({ showButton: true });
         }, 22000);
@@ -99,6 +103,12 @@ class GamePage extends Component {
         if (this.state.score >= this.state.highestScore){
             localStorage.setItem("highestScore", this.state.score);
             this.setState({highestScore: this.state.score,});
+
+            swal({
+                title: "New highscore",
+                text: "You hit a new high score - " + this.state.highestScore,
+                icon: "success",
+            });
         }
     };
 
@@ -113,6 +123,7 @@ class GamePage extends Component {
                 <div className="game" ref={this.containerRef}>
                     {this.createDirtItems()}
                 </div>
+
 
             </div>
         );

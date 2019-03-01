@@ -26,32 +26,32 @@ export function Fireworks(container) {
         self.canvas.style.position = 'fixed';
 
         self.particles = [];
-        self.partCount = 30;
+        self.partCount = 200;
         self.fireworks = [];
         self.mx = self.cw/2;
         self.my = self.ch/2;
         self.currentHue = 170;
-        self.partSpeed = 5;
-        self.partSpeedletiance = 10;
-        self.partWind = 50;
-        self.partFriction = 5;
-        self.partGravity = 1;
-        self.hueMin = 150;
-        self.hueMax = 200;
+        self.partSpeed = 30;
+        self.partSpeedletiance = 5;
+        self.partWind = 10;
+        self.partFriction = 24;
+        self.partGravity = 10;
+        self.hueMin = 20;
+        self.hueMax = 30;
         self.fworkSpeed = 10;
-        self.fworkAccel = 50;
-        self.hueletiance = 30;
-        self.flickerDensity = 20;
-        self.showShockwave = false;
+        self.fworkAccel = 20;
+        self.hueletiance = 10;
+        self.flickerDensity = 0;
+        self.showShockwave = true;
         self.showTarget = true;
-        self.clearAlpha = 25;
+        self.clearAlpha = 40;
 
         self.canvasContainer.append(self.canvas);
         self.ctx = self.canvas.getContext('2d');
         self.ctx.lineCap = 'round';
         self.ctx.lineJoin = 'round';
         self.lineWidth = 1;
-        self.bindEvents();
+        //self.bindEvents();
         self.canvasLoop();
 
         self.canvas.onselectstart = function() {
@@ -148,7 +148,7 @@ export function Fireworks(container) {
         while(i--){
             let p = self.particles[i];
             p.update(i);
-        };
+        }
     };
 
     /*=============================================================================*/
@@ -159,7 +159,7 @@ export function Fireworks(container) {
         while(i--){
             let p = self.particles[i];
             p.draw();
-        };
+        }
     };
 
     /*=============================================================================*/
@@ -299,7 +299,7 @@ export function Fireworks(container) {
         while(i--){
             let f = self.fireworks[i];
             f.update(i);
-        };
+        }
     };
 
     /*=============================================================================*/
@@ -350,6 +350,21 @@ export function Fireworks(container) {
 
     };
 
+    self.removeEvents = function(){
+        window.removeEventListener('resize', function(e){
+            e.preventDefault();
+        });
+
+        self.canvas.removeEventListener('mousedown', function(e){
+            e.preventDefault();
+        });
+
+        self.canvas.removeEventListener('mouseup', function(e){
+            e.preventDefault();
+        });
+
+    };
+
     /*=============================================================================*/
     /* Clear Canvas
     /*=============================================================================*/
@@ -385,7 +400,7 @@ export function Fireworks(container) {
         self.drawParticles();
     };
 
-    self.init();
+    //self.init();
 
     let initialLaunchCount = 10;
     while(initialLaunchCount--){
