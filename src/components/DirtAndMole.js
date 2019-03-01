@@ -28,7 +28,7 @@ class DirtAndMole extends Component {
 
     render() {
         return (
-            <div className={`hole up` + this.props.upState}>
+            <div className={`hole ` + this.props.upState}>
                 <div ref={this.moleRef} className="mole" onClick={this.onMoleClick} />
             </div>
         );
