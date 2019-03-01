@@ -5,7 +5,7 @@ export function game(state = {}, action) {
         case gameConstants.HIT_SUCCESS:
             return {
                 hit: true,
-                hitIndex: getRandomInt(1000)
+                hitIndex: getRandomInt(1000) //we use this to listen to unique hits on the componentDidUpdate method
             };
         case gameConstants.HIT_FAILURE:
             return {

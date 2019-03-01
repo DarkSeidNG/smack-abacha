@@ -1,4 +1,8 @@
-
+/**
+ * Fireworks utility for the fireworks effect
+ * @param container
+ * @constructor
+ */
 export function Fireworks(container) {
     /*=============================================================================*/
     /* Utility
