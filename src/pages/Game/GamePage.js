@@ -4,6 +4,8 @@ import { DirtAndMole } from "../../components/DirtAndMole";
 import { connect } from 'react-redux';
 import { Fireworks } from "../../helpers/fireworksHelper";
 import swal from 'sweetalert';
+import fireworks from '../../assets/sounds/fireworks.wav';
+import pain from "../../assets/sounds/pain.wav";
 
 
 class GamePage extends Component {
@@ -18,6 +20,7 @@ class GamePage extends Component {
             highestScore: 0,
         };
         this.containerRef = React.createRef();
+        this.highScoreAudio = new Audio(fireworks);
 
         this.dirtItems = [];
         this.holes = [];
@@ -43,12 +46,15 @@ class GamePage extends Component {
         this.fireworks = new Fireworks(this.containerRef.current);
         this.fireworks.init();
         this.fireworks.bindEvents();
+        this.highScoreAudio.load();
     }
 
     componentDidUpdate(oldProps) {
         const newProps = this.props;
         if(oldProps.hitIndex !== newProps.hitIndex) {
-            this.setState({score: this.state.score + 2});
+            this.setState({score: this.state.score + 10 * this.state.level});
+            this.fireworks.drawFireworks();
+            this.fireworks.drawParticles();
         }
     }
 
@@ -100,7 +106,7 @@ class GamePage extends Component {
     };
 
     setHighScore = () => {
-        if (this.state.score >= this.state.highestScore){
+        if (this.state.score > this.state.highestScore){
             localStorage.setItem("highestScore", this.state.score);
             this.setState({highestScore: this.state.score,});
 
@@ -109,6 +115,8 @@ class GamePage extends Component {
                 text: "You hit a new high score - " + this.state.highestScore,
                 icon: "success",
             });
+            this.fireworks.blastFireworks();
+            this.highScoreAudio.play();
         }
     };
 

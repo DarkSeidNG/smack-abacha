@@ -24,6 +24,7 @@ export function Fireworks(container) {
         self.canvas.width = self.cw = 600;
         self.canvas.height = self.ch = 400;
         self.canvas.style.position = 'fixed';
+        self.canvas.style.pointerEvents = 'auto';
 
         self.particles = [];
         self.partCount = 200;
@@ -38,8 +39,8 @@ export function Fireworks(container) {
         self.partGravity = 10;
         self.hueMin = 20;
         self.hueMax = 30;
-        self.fworkSpeed = 10;
-        self.fworkAccel = 20;
+        self.fworkSpeed = 30;
+        self.fworkAccel = 30;
         self.hueletiance = 10;
         self.flickerDensity = 0;
         self.showShockwave = true;
@@ -402,10 +403,13 @@ export function Fireworks(container) {
 
     //self.init();
 
-    let initialLaunchCount = 10;
-    while(initialLaunchCount--){
-        setTimeout(function(){
-            self.fireworks.push(new Firework(self.cw/2, self.ch, rand(50, self.cw-50), rand(50, self.ch/2)-50));
-        }, initialLaunchCount*200);
+    self.blastFireworks = function(){
+        let initialLaunchCount = 10;
+        while(initialLaunchCount--){
+            setTimeout(function(){
+                self.fireworks.push(new Firework(self.cw/2, self.ch, rand(50, self.cw-50), rand(50, self.ch/2)-50));
+            }, initialLaunchCount*200);
+        }
     }
+
 }
