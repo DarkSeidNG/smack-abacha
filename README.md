@@ -1,6 +1,6 @@
-# Whack-A-Tiku
+# Smack-Abacha
 
-Whack-A-Tiku is a simple whack-a-mole styled fun take on the recently concluded Nigerian Presidential election (2019) 
+Smack-Abacha is a simple whack-a-mole styled fun game built with reactjs
 
 ## Introduction
 
@@ -19,7 +19,7 @@ This app was bootstrapped using `create-react-app`
 
 ## Getting started with the project
 * To run the app locally, have node.js installed  
-* Clone the repo `git clone https://github.com/DarkSeidNG/whack-a-tiku.git`
+* Clone the repo `git clone https://github.com/DarkSeidNG/smack-abacha.git`
 * Navigate to the `whack-a-tiku` directory
 * Run `npm install` to install all dependencies
 * Run `npm start` to run the application
@@ -27,18 +27,18 @@ This app was bootstrapped using `create-react-app`
 
 ## Contributing to the project
 * Fork this repository to your github account
-* Clone the repository -  `git clone https://github.com/DarkSeidNG/whack-a-tiku.git`
+* Clone the repository -  `git clone https://github.com/DarkSeidNG/smack-abacha.git`
 * Create your feature branch - `git checkout -b your-branch-name`
 * Commit your changes - `git commit -m “[Enter message]“` or `git commit` for the interactive interface
 * Push to the remote branch - `git push origin your-branch-name`
 * Open a pull request.
 
-Click this link to visit the hosted app [Whack-A-Tiku](https://whack-a-tiku.herokuapp.com)
+Click this link to visit the hosted app [smack-abacha](https://smack-abacha.herokuapp.com)
 
 I look forward to your pull requests :)
 
 ## License
-[MIT License](https://github.com/DarkSeidNG/whack-a-tiku/blob/add-license-1/LICENSE)
+[MIT License](https://github.com/DarkSeidNG/smack-abacha/blob/add-license-1/LICENSE)
 
 ## Author
 * **[Ifeanyi Orji](ifeanyicorji@gmail.com)**

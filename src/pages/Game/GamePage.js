@@ -4,7 +4,7 @@ import { DirtAndMole } from "../../components/DirtAndMole";
 import { connect } from 'react-redux';
 import { Fireworks } from "../../helpers/fireworksHelper";
 import swal from 'sweetalert';
-import fireworks from '../../assets/sounds/fireworks.wav';
+import fireworks from '../../assets/sounds/fireworks.mp3';
 import {Link} from "react-router-dom";
 
 
@@ -123,8 +123,8 @@ class GamePage extends Component {
     render() {
         return (
             <div>
-                <h1>Whack-A-Tiku</h1>
-                <h3>This game is just a fun take on the 2019 Nigerian presidential elections, everything here is just for fun</h3>
+                <h1>Smack Abacha</h1>
+                <h3>You get this one chance to smack the hell out of Abacha! Enjoy :) ______________________________________</h3>
                 <div className="gameDetails"><div>Level - <span>{this.state.level}</span></div><div>Score - <span>{this.state.score}</span></div><div>Highest Score - <span>{this.state.highestScore}</span></div></div>
                 <Link to={`/`}><button className="gameButton" style={{float: 'left'}}>Main Menu</button></Link> {this.state.showButton ? <button onClick={this.startGame} className="gameButton" style={{float: 'right'}}>Start Game</button> : ''}
 

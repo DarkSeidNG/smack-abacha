@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { gameActions } from "../redux/actions/game.actions";
 import {connect} from "react-redux";
-import pain from '../assets/sounds/pain.wav';
+import slap from '../assets/sounds/slap.mp3';
 
 class DirtAndMole extends Component {
 
     constructor(props){
         super(props);
         this.moleRef = React.createRef();
-        this.captureAudio = new Audio(pain);
+        this.captureAudio = new Audio(slap);
 
     }
     componentDidMount() {
