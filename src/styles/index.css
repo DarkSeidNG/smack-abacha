@@ -108,7 +108,7 @@ h3 {
   height:70px;
   position: absolute;
   z-index: 4;
-  bottom: -20px;
+  bottom: -35px;
 }
 
 .mole {
@@ -128,10 +128,16 @@ h3 {
 }
 
 .gameButton {
-  width: 42%;
+  width: 32%;
   height: 30px;
   margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   float: left;
+  color: #000;
+  font-weight: bold;
+  background: #fff;
+  font-family: 'Amatic SC', cursive;
 }
 
 .gameDetails {
@@ -175,7 +181,7 @@ h3 {
   }
 
   .hole:after {
-    bottom: -10px;
+    bottom: -25px;
   }
 
   .mole {
