@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { dirtNumber } from "../../helpers/gameSetup";
 import { DirtAndMole } from "../../components/DirtAndMole";
 import { connect } from 'react-redux';
+import { Fireworks } from "../../helpers/fireworksHelper";
+import swal from 'sweetalert';
+import fireworks from '../../assets/sounds/fireworks.mp3';
+import {Link} from "react-router-dom";
 
 
 class GamePage extends Component {
@@ -15,11 +19,15 @@ class GamePage extends Component {
             score: 0,
             highestScore: 0,
         };
+        this.containerRef = React.createRef();
+        this.highScoreAudio = new Audio(fireworks);
 
         this.dirtItems = [];
         this.holes = [];
         this.timeUp = true;
         this.time = this.randomTime(1000 / parseInt(this.state.level), 1000 / parseInt(this.state.level));
+
+
     }
 
     componentDidMount() {
@@ -34,12 +42,19 @@ class GamePage extends Component {
         if (localHighestScore !== undefined){
             this.setState({highestScore: localHighestScore,});
         }
+
+        this.fireworks = new Fireworks(this.containerRef.current);
+        this.fireworks.init();
+        this.fireworks.bindEvents();
+        this.highScoreAudio.load();
     }
 
     componentDidUpdate(oldProps) {
         const newProps = this.props;
         if(oldProps.hitIndex !== newProps.hitIndex) {
-            this.setState({score: this.state.score + 2});
+            this.setState({score: this.state.score + 10 * this.state.level});
+            this.fireworks.drawFireworks();
+            this.fireworks.drawParticles();
         }
     }
 
@@ -75,7 +90,6 @@ class GamePage extends Component {
     };
 
     startGame = () => {
-
         this.setState({upState: ''});
         this.holes = document.querySelectorAll('.hole');
 
@@ -85,29 +99,39 @@ class GamePage extends Component {
         this.peep();
         setTimeout(() => { this.timeUp = true; }, 20000);
         setTimeout(() => {
+            this.fireworks.clear();
             this.setHighScore();
             this.setState({ showButton: true });
         }, 22000);
     };
 
     setHighScore = () => {
-        if (this.state.score >= this.state.highestScore){
+        if (this.state.score > this.state.highestScore){
             localStorage.setItem("highestScore", this.state.score);
             this.setState({highestScore: this.state.score,});
+
+            swal({
+                title: "New highscore",
+                text: "You hit a new high score - " + this.state.highestScore,
+                icon: "success",
+            });
+            this.fireworks.blastFireworks();
+            this.highScoreAudio.play();
         }
     };
 
     render() {
         return (
             <div>
-                <h1>Whack-A-Tiku</h1>
-                <h3>This game is just a fun take on the 2019 Nigerian presidential elections, everything here is just for fun</h3>
+                <h1>Smack Abacha</h1>
+                <h3>You get this one chance to smack the hell out of Abacha! Enjoy :) ______________________________________</h3>
                 <div className="gameDetails"><div>Level - <span>{this.state.level}</span></div><div>Score - <span>{this.state.score}</span></div><div>Highest Score - <span>{this.state.highestScore}</span></div></div>
-                {this.state.showButton ? <button onClick={this.startGame} className="startButton" >Start Game</button> : ''}
+                <Link to={`/`}><button className="gameButton" style={{float: 'left'}}>Main Menu</button></Link> {this.state.showButton ? <button onClick={this.startGame} className="gameButton" style={{float: 'right'}}>Start Game</button> : ''}
 
-                <div className="game">
+                <div className="game" ref={this.containerRef}>
                     {this.createDirtItems()}
                 </div>
+
 
             </div>
         );

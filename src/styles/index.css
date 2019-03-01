@@ -32,8 +32,9 @@ h1 {
   text-align: center;
   font-size: 10rem;
   line-height: 1;
-  margin-bottom: 0;
   color: #fff;
+  margin: 0;
+  padding: 0;
 }
 
 h3 {
@@ -45,7 +46,17 @@ h3 {
 }
 
 .levels {
-  padding: 30px;
+  padding: 20px;
+}
+
+.home-highscore {
+  font-size: 25px;
+  text-align: center;
+}
+
+.home-highscore > span {
+  font-family: Roboto sans-serif;
+  color: #fff;
 }
 
 .levelItem {
@@ -75,7 +86,7 @@ h3 {
 }
 
 .game {
-  width: 600px;
+  width: 100%;
   height: 400px;
   display: flex;
   flex-wrap: wrap;
@@ -96,8 +107,8 @@ h3 {
   width: 100%;
   height:70px;
   position: absolute;
-  z-index: 2;
-  bottom: -30px;
+  z-index: 4;
+  bottom: -20px;
 }
 
 .mole {
@@ -108,16 +119,19 @@ h3 {
   width: 100%;
   height: 100%;
   transition:all 0.4s;
+  pointer-events: all;
+  z-index: 2;
 }
 
 .hole.up .mole {
   top: 0;
 }
 
-.startButton {
-  width: 40%;
+.gameButton {
+  width: 42%;
   height: 30px;
-  margin-left: 30%;
+  margin-top: 10px;
+  float: left;
 }
 
 .gameDetails {
@@ -140,5 +154,32 @@ h3 {
 .gameDetails > div > span {
   font-size: 22px;
   color: #ebebeb;
+}
+
+
+@media only screen and (max-width: 700px) {
+  h1 {
+    font-size: 5rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .gameDetails > div {
+    font-size: 1rem;
+  }
+
+  .gameDetails > div > span {
+    font-size: 1.1rem;
+  }
+
+  .hole:after {
+    bottom: -10px;
+  }
+
+  .mole {
+    background-size: 50%;
+  }
 }
 

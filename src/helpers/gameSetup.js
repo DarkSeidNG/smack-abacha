@@ -6,11 +6,11 @@
  * @type {{difficulty: number, levelName: string}[]}
  */
 const stages = [
-    { levelName: 'Bauchi', difficulty: 1},
-    { levelName: 'Borno', difficulty: 2},
-    { levelName: 'Jigawa', difficulty: 3},
-    { levelName: 'Katsina', difficulty: 4},
-    { levelName: 'Kano', difficulty: 5},
+    { levelName: 'Pilot', difficulty: 1},
+    { levelName: 'The Plot', difficulty: 2},
+    { levelName: 'Lagos Standoff', difficulty: 3},
+    { levelName: 'Abattoir', difficulty: 4},
+    { levelName: 'Odessy', difficulty: 5},
 ];
 
 const numberOfDirtPerStage = 6;
