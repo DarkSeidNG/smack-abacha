@@ -49,6 +49,11 @@ class GamePage extends Component {
         this.highScoreAudio.load();
     }
 
+    /**
+     * On componentDidUpdate we check to see if the redux dispatched a new hit success event and updates the
+     * score state accordingly
+     * @param oldProps
+     */
     componentDidUpdate(oldProps) {
         const newProps = this.props;
         if(oldProps.hitIndex !== newProps.hitIndex) {
@@ -58,6 +63,10 @@ class GamePage extends Component {
         }
     }
 
+    /**
+     * Create DirtMole Items (Holes)
+     * @returns {Array}
+     */
     createDirtItems = () => {
         this.dirtItems = [];
         for (let i = 0; i < dirtNumber; i++){
@@ -70,6 +79,11 @@ class GamePage extends Component {
         return Math.round(Math.random() * (max - min) + min);
     };
 
+    /**
+     * return a random hole (dirt)
+     * @param holes
+     * @returns {*}
+     */
     randomHole = (holes) => {
         const idx = Math.floor(Math.random() * holes.length);
         const hole = holes[idx];
@@ -146,4 +160,6 @@ function mapStateToProps(state) {
 }
 
 const connectedGamePage = connect(mapStateToProps)(GamePage);
+export { GamePage as TestGamePage };
 export { connectedGamePage as GamePage };
+

@@ -9,13 +9,16 @@ class DirtAndMole extends Component {
         super(props);
         this.moleRef = React.createRef();
         this.captureAudio = new Audio(slap);
-
     }
+
     componentDidMount() {
-        //new Fireworks(this.moleRef.current);
         this.captureAudio.load();
     }
 
+    /**
+     * On click check if the click is trusted then dispatch the success action and play the hit audio
+     * @param e - event
+     */
     onMoleClick = (e) => {
         if(!e.isTrusted) return; // cheater!
         this.props.dispatch(gameActions.success());

@@ -28,6 +28,13 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.8"
+    "chai": "^4.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "expect": "latest",
+    "prop-types": "latest",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-mock-store": "^1.5.3",
+    "sinon": "^7.2.5"
   }
 }

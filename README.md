@@ -2,8 +2,6 @@
 
 Smack-Abacha is a simple whack-a-mole styled fun game built with reactjs
 
-## Introduction
-
 ### Dependencies
 This app was bootstrapped using `create-react-app`  
 * **[React JS](https://facebook.github.io/create-react-app)** - Reactjs is a JavaScript library developed by Facebook for building UI components. 
@@ -13,7 +11,8 @@ This app was bootstrapped using `create-react-app`
 
 ### Features
 <ul>
-<li></li>
+<li>Multi-level play</li>
+<li>Increasing difficulty level</li>
 </ul>
 
 
