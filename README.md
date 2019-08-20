@@ -19,7 +19,7 @@ This app was bootstrapped using `create-react-app`
 ## Getting started with the project
 * To run the app locally, have node.js installed  
 * Clone the repo `git clone https://github.com/DarkSeidNG/smack-abacha.git`
-* Navigate to the `whack-a-tiku` directory
+* Navigate to the `smack-abacha` directory
 * Run `npm install` to install all dependencies
 * Run `npm start` to run the application
 * To run tests - Run `npm test`
